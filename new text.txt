@@ -1,1 +1,11 @@
-song 
+git 사용방법
+git clone 레포지토리 주소//내 노트북에 git 폴더가 없을때 폴더 만들어주기
+git add .//내가 폴더안에 뭔가를 추가하고나서 해주는 명령어
+git config --global user.name"youngsuhk"
+git config --global user.email "djfls0304@naver.com"
+
+git status//어떤걸 추가했을때 추가된 파일 이름을 보여준다
+
+git commit // 제목 + 설명
+git push//올리기
+git pull//다운받기
