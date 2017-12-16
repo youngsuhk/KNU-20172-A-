@@ -4,7 +4,6 @@
 #include<sys/types.h>
 #include<netinet/in.h>
 #include<string.h>
-
 #define LEN 256
 #define WIDTH 11 //width size
 #define HEIGHT 11 //height size
@@ -17,7 +16,6 @@ struct p_information{
 	int win_record,recent_time;
 	int player_num, com_player_num;
 };
-
 void login(int fd);
 void drawBoard();
 void putting(int x, int y, int c);
@@ -25,6 +23,7 @@ void player1(int fd);
 void player2(int fd);
 struct  p_information p_info;
 int board[WIDTH][HEIGHT];
+
 main(int argc, char *argv[])
 {
 	//client
@@ -64,6 +63,7 @@ main(int argc, char *argv[])
 	//close socket
 	close(fd);
 }
+
 void player1(int fd)
 {
 	int x,y,r_x,r_y;
@@ -92,6 +92,7 @@ void player1(int fd)
 	}
 	drawBoard();
 }
+
 void player2(int fd)
 {
 	int x,y;
@@ -122,6 +123,7 @@ void player2(int fd)
 	}
 	drawBoard();
 }
+
 void login(int fd){
 	int new;
 	char id[5];
@@ -133,6 +135,7 @@ void login(int fd){
 	printf("%s\n",p_info.id);
 	write(fd,p_info.id,BUFSIZ);
 }
+
 void drawBoard(){
 	int i,j;
 	for(i=0; i<WIDTH; i++){
@@ -165,6 +168,7 @@ void drawBoard(){
 		printf("\n");
 	}
 }
+
 void putting(int x, int y, int c){
 	if(board[x][y]==0){
 		board[x][y]=c;
