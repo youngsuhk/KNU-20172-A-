@@ -63,7 +63,6 @@ main(int argc, char *argv[])
 	//close socket
 	close(fd);
 }
-
 void player1(int fd)
 {
 	int x,y,r_x,r_y;
