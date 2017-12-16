@@ -4,17 +4,20 @@
 #include<sys/types.h>
 #include<netinet/in.h>
 #include<string.h>
+
 #define LEN 256
 #define WIDTH 11 //width size
 #define HEIGHT 11 //height size
 #define SUCCESS 7
 #define FAIL 4
 #define oops(msg)       {perror(msg); exit(1);}
+
 struct p_information{
 	char id[5];
 	int win_record,recent_time;
 	int player_num, com_player_num;
 };
+
 void login(int fd);
 void drawBoard();
 void putting(int x, int y, int c);
@@ -141,20 +144,20 @@ void drawBoard(){
 			else if(board[i][j] == 2) {printf(" X");}//player2's
 			else if(board[i][j] == 0){
 				if(i==0){
-					if(j!=0&&j!=HEIGHT-1) {printf("¤Ì");}
+					if(j!=0&&j!=HEIGHT-1) {printf("Â¤ÃŒ");}
 				}
 				else if(i==WIDTH-1){
-					if(j!=0 && j!= HEIGHT-1)  {printf("¤Ç");}
+					if(j!=0 && j!= HEIGHT-1)  {printf("Â¤Ã‡");}
 				}
 				if(j == 0){
-					if(i==0) {printf("¦£-");} //(0,0)
-					else if(i==WIDTH-1) {printf("¦¦-");}
-					else printf("¤¿");
+					if(i==0) {printf("Â¦Â£-");} //(0,0)
+					else if(i==WIDTH-1) {printf("Â¦Â¦-");}
+					else printf("Â¤Â¿");
 				}
 				else if(j== HEIGHT-1){
-					if(i==0) {printf("¦¤");}
-					else if(i==WIDTH-1) {printf("¦¥");}
-					else printf("¦©");
+					if(i==0) {printf("Â¦Â¤");}
+					else if(i==WIDTH-1) {printf("Â¦Â¥");}
+					else printf("Â¦Â©");
 				}
 				if(i*j!=0&&i!=WIDTH-1&& j!=HEIGHT -1)printf(" +");
 			}
