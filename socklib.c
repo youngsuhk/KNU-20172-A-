@@ -6,7 +6,6 @@
 #include <netdb.h>
 #include <time.h>
 #include <strings.h>
-
 #define HOSTLEN 256
 #define BACKLOG 1
 
@@ -16,6 +15,7 @@ int make_server_socket(int portnum)
 {
     return make_server_socket_q(portnum, BACKLOG);
 }
+
 int make_server_socket_q(int portnum, int backlog)
 {
     struct  sockaddr_in   saddr;        /* build our address here */
@@ -44,6 +44,7 @@ int make_server_socket_q(int portnum, int backlog)
     return sock_id;
 
 }
+
 int connect_to_server(char *host, int portnum)
 {
     int                               sock;
@@ -69,4 +70,3 @@ int connect_to_server(char *host, int portnum)
 
     return sock;
 }
-
