@@ -8,8 +8,8 @@
 #include<strings.h>
 #include<curses.h>
 
-#define WIDTH 11 //width size
-#define HEIGHT 11 //height size
+#define WIDTH 20 //width size
+#define HEIGHT 20 //height size
 #define oops(msg) {perror(msg); exit(1);}
 #define ch_t(turn,next,temp) {temp=turn; turn=next; next=temp;}
 #define CONTINUE 10
@@ -45,7 +45,7 @@ void player_read(struct client_socket c_sock);
 
 int main(int ac, char *av[])
 {
-	 //server&client
+        //server&client
         int port = atoi(av[1]);
         struct sockaddr_in c_addr;
         int c_addr_size = sizeof(c_addr);
@@ -54,7 +54,7 @@ int main(int ac, char *av[])
         //program
         int i,turn;//
         int s_num;//socket number
-
+        
         if((sock = make_server_socket(port)) ==-1)
                 oops("socket");
         printf("                OmokGo\n\n      waiting for player..\n\n");
@@ -90,7 +90,8 @@ int main(int ac, char *av[])
                 write(cl_socket[1].c_socket,&gameresult.player,sizeof(int));
                 if(gameresult.end[0] == 'e')
                         break;
-				  }
+
+        }
         close(cl_socket[0].c_socket); close(cl_socket[1].c_socket);
 }
 void player_read(struct client_socket c_sock)
@@ -128,29 +129,45 @@ void login(int fd, int s_num){//new -> add id to user.txt, member->check
 }
 void drawBoard(){
         int i,j;
+	printf("  ");
+	 for(i=0;i<WIDTH;i++)
+        {
+                if(i<10)
+                        printf("%d ",i);
+                else
+                        printf("%d",i);
+        }
+	printf("\n");
         for(i=0; i<WIDTH; i++){
-                printf("        ");
+		
+        {
+                if(i<10)
+                        printf("%d ",i);
+                else
+                        printf("%d",i);
+        }
+
                 for(j=0; j<HEIGHT; j++){
-                        if(board[i][j] == 1) {printf("O-");}//player1's
-                        else if(board[i][j] == 2) {printf("X-");}//player2's
+                        if(board[i][j] == 1) {printf("â—‹-");}//player1's
+                        else if(board[i][j] == 2) {printf("â—-");}//player2's
                         else if(board[i][j] == 0){
                                 if(i==0){
-                                        if(j!=0&&j!=HEIGHT-1) {printf("¦¨-");}
+                                        if(j!=0&&j!=HEIGHT-1) {printf("â”¬-");}
                                 }
-								 else if(i==WIDTH-1){
-                                        if(j!=0 && j!= HEIGHT-1)  {printf("¦ª-");}
+                                else if(i==WIDTH-1){
+                                        if(j!=0 && j!= HEIGHT-1)  {printf("â”´-");}
                                 }
                                 if(j == 0){
-                                        if(i==0) {printf("¦£-");} //(0,0)
-                                        else if(i==WIDTH-1) {printf("¦¦-");}
-                                        else printf("¦§-");
+                                        if(i==0) {printf("â”Œ-");} //(0,0)
+                                        else if(i==WIDTH-1) {printf("â””-");}
+                                        else printf("â”œ-");
                                 }
                                 else if(j== HEIGHT-1){
-                                        if(i==0) {printf("¦¤");}
-                                        else if(i==WIDTH-1) {printf("¦¥");}
-                                        else printf("¦©");
+                                        if(i==0) {printf("â”");}
+                                        else if(i==WIDTH-1) {printf("â”˜");}
+                                        else printf("â”¤");
                                 }
-                                if(i*j!=0&&i!=WIDTH-1&& j!=HEIGHT -1)printf("¦«-");
+                                if(i*j!=0&&i!=WIDTH-1&& j!=HEIGHT -1)printf("â”¼-");
                         }
                 }
                 printf("\n");
